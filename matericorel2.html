@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi CorelDRAW - Lanjutan</title>
+    <style>
+        /* Reset & font */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #1b5e20, #43a047);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .materi:hover {
+            transform: translateY(-5px);
+        }
+
+        .materi h2 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+
+        .materi p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2e7d32;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: #1b5e20;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi CorelDRAW</h1>
+    <p>Belajar lebih dalam fitur CorelDRAW melalui video tutorial</p>
+</header>
+
+<div class="container">
+
+    <!-- Materi 4 -->
+    <section class="materi">
+        <h2>4. Cara Zoom Objek CorelDraw</h2>
+        <p>Zoom Tool di CorelDRAW digunakan untuk memperbesar atau memperkecil tampilan area kerja sehingga lebih mudah saat mengedit detail atau melihat keseluruhan desain.</p>
+
+        <div class="video-container">
+            <iframe id="video4" src="https://www.youtube.com/embed/y7auElzlfaI?enablejsapi=1" 
+            title="Video Materi 4" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 5 -->
+    <section class="materi">
+        <h2>5. Cara Memotong Objek CorelDraw</h2>
+        <p>Memotong objek di CorelDRAW dapat dilakukan dengan tool seperti Knife Tool atau Crop Tool untuk membagi, memisahkan, atau menghapus bagian tertentu dari objek sesuai kebutuhan desain.</p>
+        
+        <div class="video-container">
+            <iframe id="video5" src="https://www.youtube.com/embed/UedBbIxg6_0?enablejsapi=1" 
+            title="Video Materi 5" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 6 -->
+    <section class="materi">
+        <h2>6. Cara Perataan Objek CorelDraw</h2>
+        <p>Perataan objek di CorelDRAW dilakukan dengan fitur Align and Distribute untuk menyusun posisi objek agar sejajar, rata, atau terdistribusi rapi sesuai kebutuhan desain.</p>
+        
+        <div class="video-container">
+            <iframe id="video6" src="https://www.youtube.com/embed/MaWeS5yKlIg?enablejsapi=1" 
+            title="Video Materi 6" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="matericorel1.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="matericorel3.html" class="btn-nav">Materi Selanjutnya →</a>
+    </div>
+
+</div>
+
+<!-- Script YouTube API dan tracking progress -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var players = {};
+    var videoStatus = {video4:false, video5:false, video6:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video4','video5','video6'].forEach(function(id){
+            players[id] = new YT.Player(id, {
+                events: {'onStateChange': onPlayerStateChange}
+            });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(event.data === YT.PlayerState.ENDED){
+            for(let key in players){
+                if(players[key] === event.target){
+                    videoStatus[key] = true;
+                }
+            }
+            if(videoStatus.video4 && videoStatus.video5 && videoStatus.video6){
+                // Flag untuk progress CorelDRAW lanjutan
+                localStorage.setItem('corel_materi2_selesai','true');
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

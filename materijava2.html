@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Java - Bagian 2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #f57c00, #ef6c00, #e65100);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .materi:hover {
+            transform: translateY(-5px);
+        }
+
+        .materi h2 {
+            color: #e65100;
+            margin-top: 0;
+        }
+
+        .materi p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ef6c00;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: #e65100;
+            transform: scale(1.05);
+        }
+
+        .btn-nav.disabled {
+            background-color: #bbb;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi Java</h1>
+    <p>Belajar Java dari dasar dengan mudah melalui video interaktif</p>
+</header>
+
+<div class="container">
+
+    <!-- Materi 4 -->
+    <section class="materi">
+        <h2>4. Loops in Java</h2>
+        <p>Loops digunakan untuk menjalankan kode berulang kali tanpa harus menuliskannya berkali-kali. For loop cocok ketika jumlah perulangan sudah jelas, while loop terus berjalan selama kondisi benar, dan do-while loop akan dijalankan minimal sekali sebelum memeriksa kondisi. Dengan loops, program jadi lebih efisien dan praktis.</p>
+
+        <div class="video-container">
+            <iframe id="video4" src="https://www.youtube.com/embed/0r1SfRoLuzU?enablejsapi=1" 
+            title="Video Looping Java" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 5 -->
+    <section class="materi">
+        <h2>5. 9 Best Patterns Questions In Java</h2>
+        <p>Pattern printing di Java biasanya digunakan untuk melatih logika dan penguasaan loops. Dari pola sederhana seperti segitiga bintang hingga bentuk yang lebih kompleks, pertanyaan pattern membantu melatih cara berpikir terstruktur dan kreatif dalam menyusun kode. Dengan berlatih soal-soal pattern, kamu bisa lebih cepat memahami logika perulangan dan kondisi.</p>
+        
+        <div class="video-container">
+            <iframe id="video5" src="https://www.youtube.com/embed/GjHNGM7KN3w?enablejsapi=1" 
+            title="Best Patterns Questions" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 6 -->
+    <section class="materi">
+        <h2>6. Advanced Pattern Questions </h2>
+        <p>Advanced pattern digunakan untuk melatih logika yang lebih rumit dengan kombinasi loop bersarang dan kondisi. Pola yang dibuat biasanya lebih kompleks, seperti piramida, diamond, atau bentuk unik lainnya. Latihan ini membantu mengasah keterampilan problem solving dan pemahaman mendalam tentang struktur kontrol di Java.</p>
+        
+        <div class="video-container">
+            <iframe id="video6" src="https://www.youtube.com/embed/Dr4PpNa7AYo?enablejsapi=1" 
+            title="Advanced Pattern Questions" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="materijava1.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="materijava3.html" class="btn-nav disabled">Materi Selanjutnya →</a>
+    </div>
+
+</div>
+
+<!-- Script YouTube API dan tracking progress -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var players = {};
+    var videoStatus = {video4:false, video5:false, video6:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video4','video5','video6'].forEach(function(id){
+            players[id] = new YT.Player(id, {
+                events: {'onStateChange': onPlayerStateChange}
+            });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(event.data === YT.PlayerState.ENDED){
+            for(let key in players){
+                if(players[key] === event.target){
+                    videoStatus[key] = true;
+                }
+            }
+            if(videoStatus.video4 && videoStatus.video5 && videoStatus.video6){
+                localStorage.setItem('java_materi2_selesai','true');
+                document.getElementById("nextBtn").classList.remove("disabled");
+            }
+        }
+    }
+
+    // Cek jika materi sudah selesai sebelumnya
+    window.onload = function() {
+        if(localStorage.getItem('java_materi2_selesai') === 'true'){
+            document.getElementById("nextBtn").classList.remove("disabled");
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Python Lanjutan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #306998, #4B8BBE, #0e4c92);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 { font-size: 3em; margin: 0; position: relative; z-index: 2; }
+        header p { font-size: 1.2em; margin-top: 10px; opacity: 0.95; }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .materi:hover { transform: translateY(-5px); }
+        .materi h2 { color: #306998; margin-top: 0; }
+        .materi p { line-height: 1.6; margin-bottom: 20px; }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: 0;
+        }
+
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4B8BBE;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover { background-color: #306998; transform: scale(1.05); }
+        .btn-nav.disabled { background-color: #bbb; cursor: not-allowed; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi Python</h1>
+    <p>Belajar Python dasar untuk pemula dengan video interaktif</p>
+</header>
+
+<div class="container">
+
+    <!-- Materi 10 -->
+    <section class="materi">
+        <h2>10. Pengenalan String</h2>
+        <p>String adalah tipe data untuk menyimpan teks, seperti kata, kalimat, atau karakter. Di Python, string ditulis di dalam tanda kutip tunggal '...' atau ganda "...". String bisa digabung dengan +, diulang dengan *, dan diakses per karakter menggunakan indeks. Dengan string, kamu bisa menyimpan nama, pesan, atau data teks lain dalam program dengan mudah.</p>
+        <div class="video-container">
+            <iframe id="video10" src="https://www.youtube.com/embed/fhAEh1Z9YuY?enablejsapi=1" 
+            title="Pengenalan String" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 11 -->
+    <section class="materi">
+        <h2>11. Format String</h2>
+        <p>Format string dipakai untuk menyisipkan nilai variabel ke dalam teks dengan rapi. Misalnya menggunakan f-string: f"Nama saya {nama}", atau metode .format(). Dengan format string, kita bisa membuat teks dinamis, menampilkan hasil perhitungan, atau menyusun pesan yang lebih mudah dibaca tanpa ribet menggabungkan banyak string dan variabel.</p>
+        <div class="video-container">
+            <iframe id="video11" src="https://www.youtube.com/embed/D66WxqZnjXg?enablejsapi=1" 
+            title="Format String" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 12 -->
+    <section class="materi">
+        <h2>12. String width and Alignment</h2>
+        <p>Di Python, kita bisa mengatur lebar tampilan string dan posisinya agar rapi, misalnya di tabel atau laporan. Gunakan metode seperti str.ljust(), str.rjust(), atau str.center() untuk menggeser teks ke kiri, kanan, atau tengah. Dengan pengaturan lebar dan alignment, tampilan output program jadi lebih rapi dan mudah dibaca.</p>
+        <div class="video-container">
+            <iframe id="video12" src="https://www.youtube.com/embed/q9GW5rzOMu4?enablejsapi=1" 
+            title="String width and Alignment" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="materipy3.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="quizpython.html" class="btn-nav disabled">Kerjakan Quiz →</a>
+    </div>
+
+</div>
+
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var players = {};
+    var videoStatus = {video10:false, video11:false, video12:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video10','video11','video12'].forEach(function(id){
+            players[id] = new YT.Player(id, { events: {'onStateChange': onPlayerStateChange} });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(event.data === YT.PlayerState.ENDED){
+            for(let key in players){
+                if(players[key] === event.target){
+                    videoStatus[key] = true;
+                }
+            }
+            if(videoStatus.video10 && videoStatus.video11 && videoStatus.video12){
+                localStorage.setItem('python_materi4_selesai','true');
+                document.getElementById("nextBtn").classList.remove("disabled");
+
+                // ✅ Update progress kelas Python penuh
+                localStorage.setItem('py_kelas_selesai','true');
+            }
+        }
+    }
+
+    window.onload = function() {
+        if(localStorage.getItem('python_materi4_selesai') === 'true'){
+            document.getElementById("nextBtn").classList.remove("disabled");
+        }
+
+        // Pastikan progress bar kelas Python di beranda ter-update penuh
+        if(localStorage.getItem('py_materi1_selesai') === 'true' &&
+           localStorage.getItem('py_materi2_selesai') === 'true' &&
+           localStorage.getItem('py_materi3_selesai') === 'true' &&
+           localStorage.getItem('py_materi4_selesai') === 'true'){
+               localStorage.setItem('py_kelas_selesai','true');
+        }
+    }
+</script>
+
+</body>
+</html>

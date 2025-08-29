@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Java - OOP Dasar</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #FF6F00, #F57C00, #E65100);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .materi:hover {
+            transform: translateY(-5px);
+        }
+
+        .materi h2 {
+            color: #E65100;
+            margin-top: 0;
+        }
+
+        .materi p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #F57C00;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: #E65100;
+            transform: scale(1.05);
+        }
+
+        .btn-nav.disabled {
+            background-color: #bbb;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi Java</h1>
+    <p>Belajar Konsep Dasar OOP (Object Oriented Programming) di Java</p>
+</header>
+
+<div class="container">
+
+    <!-- Materi 10 -->
+    <section class="materi">
+        <h2>10. Arrays Introduction</h2>
+        <p>OOP (Object Oriented Programming) adalah paradigma pemrograman yang berfokus pada objek. Objek memiliki data (atribut) dan perilaku (method).</p>
+
+        <div class="video-container">
+            <iframe id="video1" src="https://www.youtube.com/embed/NTHVTY6w2Co?enablejsapi=1" 
+            title="Video Pengenalan OOP Java" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 11 -->
+    <section class="materi">
+        <h2>11. 2D Arrays</h2>
+        <p>2D array di Java adalah array yang punya baris dan kolom, mirip seperti tabel atau matriks. Struktur ini memudahkan kita menyimpan dan mengolah data yang berbentuk grid, misalnya papan permainan, data matematika, atau tabel angka.</p>
+        
+        <div class="video-container">
+            <iframe id="video2" src="https://www.youtube.com/embed/18Zt5I4S45o?enablejsapi=1" 
+            title="Video 2D Arrays" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 12 -->
+    <section class="materi">
+        <h2>12. Strings</h2>
+        <p>String di Java adalah tipe data khusus yang digunakan untuk menyimpan dan mengolah teks. Dengan String, kamu bisa melakukan banyak hal seperti menggabungkan kata, menghitung panjang teks, atau mengambil karakter tertentu. String sangat penting karena hampir semua aplikasi butuh bekerja dengan teks.</p>
+        
+        <div class="video-container">
+            <iframe id="video3" src="https://www.youtube.com/embed/vCRD36bG8xQ?enablejsapi=1" 
+            title="Video Strings" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="materijava3.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="quizjava.html" class="btn-nav disabled">Kerjakan quiz →</a>
+    </div>
+
+</div>
+
+<!-- Script YouTube API dan tracking progress -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var players = {};
+    var videoStatus = {video1:false, video2:false, video3:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video1','video2','video3'].forEach(function(id){
+            players[id] = new YT.Player(id, {
+                events: {'onStateChange': onPlayerStateChange}
+            });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(event.data === YT.PlayerState.ENDED){
+            for(let key in players){
+                if(players[key] === event.target){
+                    videoStatus[key] = true;
+                }
+            }
+            if(videoStatus.video1 && videoStatus.video2 && videoStatus.video3){
+                // Flag progress Java materi 4
+                localStorage.setItem('java_materi4_selesai','true');
+                document.getElementById("nextBtn").classList.remove("disabled");
+            }
+        }
+    }
+
+    // Cek jika materi sudah selesai sebelumnya
+    window.onload = function() {
+        if(localStorage.getItem('java_materi4_selesai') === 'true'){
+            document.getElementById("nextBtn").classList.remove("disabled");
+        }
+    }
+</script>
+
+</body>
+</html>

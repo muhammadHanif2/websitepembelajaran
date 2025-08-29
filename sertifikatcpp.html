@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Sertifikat Penyelesaian</title>
+<style>
+body {
+    font-family: 'Times New Roman', serif;
+    background: linear-gradient(135deg, #f9f6f1, #f4e2d8);
+    text-align: center;
+    padding: 30px;
+}
+.sertifikat {
+    width: 900px;
+    height: 650px;
+    padding: 40px;
+    border: 15px solid #d4af37;
+    background: white;
+    margin: auto;
+    position: relative;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+}
+.border-inner {
+    border: 5px solid #d4af37;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+}
+.judul {
+    font-size: 38px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+.subjudul {
+    font-size: 20px;
+    color: #555;
+    margin-top: 5px;
+}
+.nama {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 30px 0 10px 0;
+    color: #000;
+}
+.nilai {
+    font-size: 24px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #27ae60;
+}
+.pesan {
+    font-style: italic;
+    margin-top: 15px;
+    color: #666;
+}
+.ttd {
+    position: absolute;
+    bottom: 30px;
+    right: 80px;
+    text-align: center;
+}
+.ttd img {
+    width: 150px;
+}
+button {
+    background: #d4af37;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+button:hover {
+    background: #b9932f;
+}
+.pesan-gagal {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+    margin-top: 50px;
+}
+</style>
+</head>
+<body>
+
+<h2>🎉 Hasil Kelas C++</h2>
+
+<div id="hasilLulus" style="display:none;">
+    <div class="sertifikat" id="sertifikat">
+        <div class="border-inner">
+            <div class="judul">SERTIFIKAT PENYELESAIAN</div>
+            <div class="subjudul">Diberikan kepada</div>
+            <div class="nama" id="namaUserDisplay">[Nama Anda]</div>
+            <div class="subjudul">Atas keberhasilan menyelesaikan kelas <b>C++</b></div>
+            <div class="nilai" id="nilaiDisplay">Nilai: 0 / 100</div>
+            <p class="pesan">Terima kasih atas dedikasi dan usaha Anda!</p>
+            <div class="ttd">
+                <p><b>Instruktur</b></p>
+                <img crossorigin="anonymous" src="https://static.vecteezy.com/system/resources/previews/038/830/358/non_2x/hand-drawn-fake-autograph-sample-editable-stroke-signature-vector.jpg" alt="Tanda Tangan">
+                <p><b>Muhammad Nur Chanif, S.Kom</b></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tombol Unduh Sertifikat -->
+    <button onclick="downloadSertifikat()">📥 Unduh Sertifikat</button>
+
+    <!-- Tombol Kembali ke Beranda -->
+    <button id="kembaliBeranda">🏠 Kembali ke Beranda</button>
+</div>
+
+<div id="hasilGagal" class="pesan-gagal" style="display:none;">
+    ❌ Maaf, Anda belum lulus. Silakan ulangi materi untuk mendapatkan sertifikat.
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+// Ambil data
+const nama = localStorage.getItem("namaUser") || "[Nama Anda]";
+const nilai = parseInt(localStorage.getItem("nilaiQuiz")) || 0;
+
+// Tampilkan kondisi lulus/gagal
+if (nilai >= 60) {
+    document.getElementById("hasilLulus").style.display = "block";
+    document.getElementById("namaUserDisplay").textContent = nama;
+    document.getElementById("nilaiDisplay").textContent = "Nilai: " + nilai + " / 100";
+} else {
+    document.getElementById("hasilGagal").style.display = "block";
+}
+
+// Unduh sertifikat sebagai PNG
+function downloadSertifikat() {
+    html2canvas(document.getElementById("sertifikat"), { useCORS: true, allowTaint: false, scale: 2 }).then(canvas => {
+        const link = document.createElement("a");
+        link.download = `Sertifikat-${nama}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+    });
+}
+
+// Tombol Kembali ke Beranda
+document.getElementById("kembaliBeranda").addEventListener("click", function() {
+    window.location.href = "index.html"; // ganti sesuai nama file beranda
+});
+</script>
+
+</body>
+</html>

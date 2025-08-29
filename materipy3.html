@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Python Lanjutan</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #306998, #4B8BBE, #0e4c92);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .materi:hover {
+            transform: translateY(-5px);
+        }
+
+        .materi h2 {
+            color: #306998;
+            margin-top: 0;
+        }
+
+        .materi p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4B8BBE;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: #306998;
+            transform: scale(1.05);
+        }
+
+        .btn-nav.disabled {
+            background-color: #bbb;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi Python</h1>
+    <p>Belajar Python dasar untuk pemula dengan video interaktif</p>
+</header>
+
+<div class="container">
+
+    <!-- Materi 7 -->
+    <section class="materi">
+        <h2>7. Operasi Logika atau Boolean</h2>
+        <p>Operator logika dipakai untuk menggabungkan atau membalik kondisi yang bernilai True atau False. Contohnya and (keduanya harus True), or (salah satu True), dan not (membalik nilai True jadi False atau sebaliknya). Operator ini sering digunakan di if atau loop untuk membuat keputusan yang lebih kompleks dalam program.</p>
+        
+        <div class="video-container">
+            <iframe id="video7" src="https://www.youtube.com/embed/Sl7zqPpC2VI?enablejsapi=1" 
+            title="Operasi Logika atau Boolean" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 8 -->
+    <section class="materi">
+        <h2>8. Operator Bitwise</h2>
+        <p>Operator bitwise bekerja langsung pada representasi biner angka. Contohnya & (AND), | (OR), ^ (XOR), ~ (NOT), serta << dan >> untuk geser bit kiri atau kanan. Operator ini berguna untuk manipulasi data tingkat rendah, optimasi, atau pemrograman yang butuh operasi biner seperti kriptografi dan kontrol hardware.</p>
+        
+        <div class="video-container">
+            <iframe id="video8" src="https://www.youtube.com/embed/-VrqfCGwr88?enablejsapi=1" 
+            title="Video Operator Bitwise" allowfullscreen></iframe>
+        </div>
+    </section>
+
+     <!-- Materi 9 -->
+    <section class="materi">
+        <h2>9. Operator Assignment</h2>
+        <p>Operator assignment dipakai untuk memberi nilai ke variabel, biasanya menggunakan =. Selain itu, ada juga kombinasi dengan operasi lain seperti +=, -=, *=, /=, dan %= supaya lebih ringkas. Misalnya x += 5 sama dengan x = x + 5. Dengan operator ini, kita bisa memperbarui nilai variabel dengan cepat tanpa menulis ulang nama variabelnya.</p>
+        
+        <div class="video-container">
+            <iframe id="video9" src="https://www.youtube.com/embed/49KDyhzgCmA?enablejsapi=1" 
+            title="Video Operator Assignment" allowfullscreen></iframe>
+        </div>
+    </section>
+
+     <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="materipy2.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="materipy4.html" class="btn-nav disabled">Materi Selanjutnya →</a>
+    </div>
+
+</div>
+
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var players = {};
+    var videoStatus = {video7:false, video8:false, video9:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video7','video8','video9'].forEach(function(id){
+            players[id] = new YT.Player(id, {
+                events: {'onStateChange': onPlayerStateChange}
+            });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(event.data === YT.PlayerState.ENDED){
+            for(let key in players){
+                if(players[key] === event.target){
+                    videoStatus[key] = true;
+                }
+            }
+            if(videoStatus.video7 && videoStatus.video8 && videoStatus.video9){
+                // Flag materi 3 selesai
+                localStorage.setItem('python_materi3_selesai','true');
+                document.getElementById("nextBtn").classList.remove("disabled");
+
+                // Update progress bar Python di beranda
+                updatePythonProgress();
+            }
+        }
+    }
+
+    function updatePythonProgress(){
+        let progress = 0;
+        if(localStorage.getItem('py_materi1_selesai')==='true') progress += 33.33;
+        if(localStorage.getItem('py_materi2_selesai')==='true') progress += 33.33;
+        if(localStorage.getItem('py_materi3_selesai')==='true') progress += 33.34;
+
+        localStorage.setItem('python_progress', progress); // simpan progress total
+    }
+
+    window.onload = function() {
+        if(localStorage.getItem('python_materi3_selesai') === 'true'){
+            document.getElementById("nextBtn").classList.remove("disabled");
+        }
+        // pastikan progress Python di beranda update juga saat reload
+        updatePythonProgress();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Python Lanjutan</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f6f8; color: #333; }
+        header { background: linear-gradient(90deg, #306998, #4B8BBE, #0e4c92); color: #fff; text-align: center; padding: 60px 20px; position: relative; overflow: hidden; }
+        header h1 { font-size: 3em; margin: 0; position: relative; z-index: 2; }
+        header p { font-size: 1.2em; margin-top: 10px; opacity: 0.95; }
+        header::before { content: ''; position: absolute; width: 300px; height: 300px; background: rgba(255,255,255,0.2); border-radius: 50%; top: -100px; right: -100px; }
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .materi { background-color: #fff; border-radius: 12px; padding: 30px; margin-bottom: 30px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: transform 0.3s ease; }
+        .materi:hover { transform: translateY(-5px); }
+        .materi h2 { color: #306998; margin-top: 0; }
+        .materi p { line-height: 1.6; margin-bottom: 20px; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+        .materi-nav { display: flex; justify-content: space-between; margin-top: 30px; padding: 20px; }
+        .btn-nav { display: inline-block; padding: 10px 20px; background-color: #4B8BBE; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.3s; }
+        .btn-nav:hover { background-color: #306998; transform: scale(1.05); }
+        .btn-nav.disabled { background-color: #bbb; cursor: not-allowed; pointer-events: none; }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Materi Python</h1>
+    <p>Belajar Python dasar untuk pemula dengan video interaktif</p>
+</header>
+<div class="container">
+    <!-- Materi 4 -->
+    <section class="materi">
+        <h2>4. Casting Tipe Data</h2>
+        <p>Casting adalah cara mengubah tipe data satu ke tipe data lain. Misalnya, angka bisa diubah jadi string supaya bisa digabung dengan teks, atau string "123" bisa diubah jadi angka untuk dihitung. Python punya fungsi bawaan seperti int(), float(), str(), dan bool() untuk melakukan casting. Dengan casting, kita bisa lebih fleksibel memanipulasi data sesuai kebutuhan program.</p>
+        <div class="video-container">
+            <iframe id="video4" src="https://www.youtube.com/embed/3d8JbMafZOY?enablejsapi=1" title="Video Casting Tipe Data" allowfullscreen></iframe>
+        </div>
+    </section>
+    <!-- Materi 5 -->
+    <section class="materi">
+        <h2>5. Operasi Aritmatika</h2>
+        <p>Python bisa melakukan perhitungan matematika dasar seperti penjumlahan (+), pengurangan (-), perkalian (*), pembagian (/), sisa bagi (%), dan pangkat (**). Ada juga pembagian bulat (//) yang hasilnya dibulatkan ke bawah. Dengan operator aritmatika ini, kamu bisa menghitung angka, membuat kalkulator, atau memproses data numerik dalam program dengan mudah.</p>
+        <div class="video-container">
+            <iframe id="video5" src="https://www.youtube.com/embed/RoDGGTWbKK4?enablejsapi=1" title="Video Operasi Aritmatika" allowfullscreen></iframe>
+        </div>
+    </section>
+    <!-- Materi 6 -->
+    <section class="materi">
+        <h2>6. Operasi Komparasi</h2>
+        <p>Operasi komparasi dipakai untuk membandingkan dua nilai dan menghasilkan True atau False. Contohnya == untuk sama dengan, != untuk tidak sama, > dan < untuk lebih besar atau lebih kecil, serta >= dan <= untuk lebih besar atau sama/kecil atau sama. Operator ini biasanya dipakai di kondisi if atau loop untuk mengambil keputusan dalam program.</p>
+        <div class="video-container">
+            <iframe id="video6" src="https://www.youtube.com/embed/Kv_lDWq8kCc?enablejsapi=1" title="Video Operasi Komparasi" allowfullscreen></iframe>
+        </div>
+    </section>
+    <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="materipy1.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="materipy3.html" class="btn-nav disabled">Materi Selanjutnya →</a>
+    </div>
+</div>
+
+<!-- Script YouTube API dan tracking progress -->
+<script>
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+document.body.appendChild(tag);
+
+var players = {};
+var videoStatus = {video4:false, video5:false, video6:false};
+
+function onYouTubeIframeAPIReady() {
+    ['video4','video5','video6'].forEach(function(id){
+        players[id] = new YT.Player(id, { events: {'onStateChange': onPlayerStateChange} });
+    });
+}
+
+function onPlayerStateChange(event) {
+    if(event.data === YT.PlayerState.ENDED){
+        for(let key in players){
+            if(players[key] === event.target){
+                videoStatus[key] = true;
+            }
+        }
+        if(videoStatus.video4 && videoStatus.video5 && videoStatus.video6){
+            // Flag progress Python Lanjutan
+            localStorage.setItem('python_materi2_selesai','true');
+            document.getElementById("nextBtn").classList.remove("disabled");
+
+            // Update progress bar utama Python di beranda
+            localStorage.setItem('progress-python', 100); // set penuh 100%
+        }
+    }
+}
+
+window.onload = function() {
+    if(localStorage.getItem('python_materi2_selesai') === 'true'){
+        document.getElementById("nextBtn").classList.remove("disabled");
+        localStorage.setItem('progress-python', 100); // pastikan progress penuh saat reload
+    }
+}
+</script>
+</body>
+</html>

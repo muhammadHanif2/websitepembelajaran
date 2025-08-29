@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Materi MS Word</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      color: #333;
+    }
+    header {
+      background: linear-gradient(90deg, #1a73e8, #4dabf7);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 3em;
+      margin: 0;
+      position: relative;
+      z-index: 2;
+    }
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      opacity: 0.9;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      top: -100px;
+      right: -100px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+    .materi {
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .materi:hover { transform: translateY(-5px); }
+    .materi h2 { color: #1a73e8; margin-top: 0; }
+    .materi p { line-height: 1.6; margin-bottom: 20px; }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .materi-nav {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      padding: 20px;
+    }
+    .btn-nav {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #4f46e5;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      pointer-events: none; 
+      opacity: 0.5; 
+    }
+    .btn-nav.enabled {
+      pointer-events: auto;
+      opacity: 1;
+    }
+    .btn-nav:hover {
+      background-color: #3730a3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Materi Microsoft Word</h1>
+  <p>Belajar MS Word dengan mudah dan interaktif melalui video tutorial</p>
+</header>
+
+<div class="container">
+
+  <!-- Materi 10 -->
+  <section class="materi">
+    <h2>10. Mengatur Margin</h2>
+    <p>Di Microsoft Word, kamu bisa mengatur margin untuk menentukan jarak antara teks dan tepi halaman. Fitur ini penting agar dokumen terlihat rapi, profesional, dan sesuai dengan format yang dibutuhkan.</p>
+    <div class="video-container">
+      <iframe id="player0" src="https://www.youtube.com/embed/EOeyGdNWptY?enablejsapi=1"
+        title="Video Mengatur Margin" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Materi 11 -->
+  <section class="materi">
+    <h2>11. Mengatur Kolom</h2>
+    <p>Di Microsoft Word, kamu bisa mengatur kolom untuk membagi teks menjadi beberapa bagian.</p>
+    <div class="video-container">
+      <iframe id="player1" src="https://www.youtube.com/embed/qzuNsWjadms?enablejsapi=1"
+        title="Video Mengatur Kolom" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Materi 12 -->
+  <section class="materi">
+    <h2>12. Mengatur Breaks</h2>
+    <p>Di Microsoft Word, kamu bisa menambahkan breaks untuk memisahkan bagian dokumen.</p>
+    <div class="video-container">
+      <iframe id="player2" src="https://www.youtube.com/embed/StN_tJpA2gA?enablejsapi=1"
+        title="Video Mengatur Breaks" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Navigasi Materi -->
+  <div class="materi-nav">
+    <a id="prevBtn" href="materi3.html" class="btn-nav enabled">← Materi Sebelumnya</a>
+    <a id="nextBtn" href="materi5.html" class="btn-nav">Materi Selanjutnya →</a>
+  </div>
+
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+  let players = [];
+  let videoStatus = [false, false, false];
+  const videoIDs = ["EOeyGdNWptY", "qzuNsWjadms", "StN_tJpA2gA"];
+
+  function onYouTubeIframeAPIReady() {
+    for (let i = 0; i < videoIDs.length; i++) {
+      players[i] = new YT.Player("player" + i, {
+        events: {
+          'onStateChange': onPlayerStateChange.bind(null, i)
+        }
+      });
+    }
+  }
+
+  function onPlayerStateChange(index, event) {
+    if (event.data === YT.PlayerState.ENDED) {
+      videoStatus[index] = true;
+      localStorage.setItem("msword_materi4_video" + index, "true");
+      checkAllVideosCompleted();
+    }
+  }
+
+  function checkAllVideosCompleted() {
+    if (videoStatus.every(status => status)) {
+      document.getElementById("nextBtn").classList.add("enabled");
+      localStorage.setItem("msword_materi4_selesai", "true");
+      localStorage.setItem('updateProgressMSWord', Date.now());
+    }
+  }
+
+  window.onload = function() {
+    for (let i = 0; i < videoStatus.length; i++) {
+      if (localStorage.getItem("msword_materi4_video" + i) === "true") {
+        videoStatus[i] = true;
+      }
+    }
+    checkAllVideosCompleted();
+  };
+</script>
+
+</body>
+</html>

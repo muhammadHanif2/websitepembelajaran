@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JavaScript - Bagian 2</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #f7e018, #ffcc00, #f5a623);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .materi:hover {
+            transform: translateY(-5px);
+        }
+
+        .materi h2 {
+            color: #f5a623;
+            margin-top: 0;
+        }
+
+        .materi p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f7c600;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: #f5a623;
+            transform: scale(1.05);
+        }
+
+        .btn-nav.disabled {
+            background-color: #bbb;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi JavaScript</h1>
+    <p>Belajar JavaScript dasar untuk pemula dengan video interaktif</p>
+</header>
+
+<div class="container">
+
+    <!-- Materi 4 -->
+    <section class="materi">
+        <h2>4. OPERATOR PADA JAVASCRIPT : Aritmatika, Penugasan & Perbandingan</h2>
+        <p>SJavaScript punya berbagai operator untuk mengolah data. Operator aritmatika digunakan untuk perhitungan seperti +, -, *, /, dan %. Operator penugasan dipakai untuk memberi atau memperbarui nilai variabel, contohnya =, +=, atau -=. Operator perbandingan digunakan untuk membandingkan dua nilai, seperti ==, ===, !=, <, >, <=, dan >=, hasilnya berupa true atau false.</p>
+
+        <div class="video-container">
+            <iframe id="video4" src="https://www.youtube.com/embed/EnXClrVdpTM?enablejsapi=1" 
+            title="Video OPERATOR PADA JAVASCRIPT" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 5 -->
+    <section class="materi">
+        <h2>5. OPERATOR PADA JAVASCRIPT : Logika, String, Typeof dan Kondisional</h2>
+        <p>Operator logika dipakai untuk menghubungkan kondisi, seperti && (dan), || (atau), dan ! (tidak). Operator string digunakan untuk menggabungkan teks, biasanya dengan tanda +. Operator typeof berguna untuk mengecek tipe data dari sebuah nilai, misalnya number atau string. Sedangkan operator kondisional atau ternary (kondisi ? nilai1 : nilai2) dipakai untuk memilih hasil berdasarkan kondisi tertentu dalam satu baris kode.</p>
+        
+        <div class="video-container">
+            <iframe id="video5" src="https://www.youtube.com/embed/_XSeF00qNWE?enablejsapi=1" 
+            title="Video OPERATOR PADA JAVASCRIPT" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 6 -->
+    <section class="materi">
+        <h2>6. TIPE DATA PADA JAVASCRIPT : STRING</h2>
+        <p>String adalah tipe data untuk menyimpan teks di JavaScript. Teks ini bisa berupa huruf, angka, simbol, atau kombinasi semuanya, asalkan diapit oleh tanda kutip tunggal ('...'), kutip ganda ("..."), atau backtick (`...`). Dengan string, kamu bisa menampilkan pesan, menggabungkan teks, atau memanipulasi kata sesuai kebutuhan.</p>
+        
+        <div class="video-container">
+            <iframe id="video6" src="https://www.youtube.com/embed/ud322_5-M3s?enablejsapi=1" 
+            title="Video TIPE DATA PADA JAVASCRIPT" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="materijs1.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="materijs3.html" class="btn-nav disabled">Materi Selanjutnya →</a>
+    </div>
+
+</div>
+
+<!-- Script YouTube API dan tracking progress -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var players = {};
+    var videoStatus = {video4:false, video5:false, video6:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video4','video5','video6'].forEach(function(id){
+            players[id] = new YT.Player(id, {
+                events: {'onStateChange': onPlayerStateChange}
+            });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(event.data === YT.PlayerState.ENDED){
+            for(let key in players){
+                if(players[key] === event.target){
+                    videoStatus[key] = true;
+                }
+            }
+            if(videoStatus.video4 && videoStatus.video5 && videoStatus.video6){
+                localStorage.setItem('js_materi2_selesai','true');
+                document.getElementById("nextBtn").classList.remove("disabled");
+            }
+        }
+    }
+
+    window.onload = function() {
+        if(localStorage.getItem('js_materi2_selesai') === 'true'){
+            document.getElementById("nextBtn").classList.remove("disabled");
+        }
+    }
+</script>
+
+</body>
+</html>

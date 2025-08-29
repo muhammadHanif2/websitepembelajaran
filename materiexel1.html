@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Microsoft Exel</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(90deg, #107c10, #34a853);
+            color: #fff;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .materi:hover { transform: translateY(-5px); }
+        .materi h2 { color: #1ED26F; margin-top: 0; }
+        .materi p { line-height: 1.6; margin-bottom: 20px; }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #2D9F46;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn-nav:hover {
+            background-color: #2D9F46;
+            transform: scale(1.05);
+        }
+        .btn-nav.locked {
+            background-color: #9ca3af;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi Microsoft Exel</h1>
+    <p>Belajar MS Exel dengan mudah dan interaktif melalui video tutorial</p>
+</header>
+
+<div class="container">
+    <!-- Materi 1 -->
+    <section class="materi">
+        <h2>1. Pengenalan Microsoft Exel</h2>
+        <p>Microsoft Excel adalah aplikasi pengolah data ...</p>
+        <div class="video-container">
+            <iframe id="video1" src="https://www.youtube.com/embed/ROnDvpParoc?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 2 -->
+    <section class="materi">
+        <h2>2. Membuat Tabel Di Microsoft Exel</h2>
+        <p>Di Microsoft Excel, kamu bisa menambahkan tabel ...</p>
+        <div class="video-container">
+            <iframe id="video2" src="https://www.youtube.com/embed/7FnDuXo2UWc?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 3 -->
+    <section class="materi">
+        <h2>3. Membuat Grafik Di Microsoft Exel</h2>
+        <p>Di Microsoft Excel, kamu bisa membuat grafik ...</p>
+        <div class="video-container">
+            <iframe id="video3" src="https://www.youtube.com/embed/1-BhbQm2dCA?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi -->
+    <div class="materi-nav">
+        <a href="index.html" class="btn-nav">← Kembali Ke Beranda</a>
+        <a id="nextBtn" href="materiexel2.html" class="btn-nav locked">Materi Selanjutnya →</a>
+    </div>
+</div>
+
+<!-- YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    var players = {};
+    var videoStatus = {video1:false, video2:false, video3:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video1','video2','video3'].forEach(function(id){
+            players[id] = new YT.Player(id, {
+                events: { 'onStateChange': onPlayerStateChange }
+            });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+            for (let key in players) {
+                if (players[key] === event.target) {
+                    videoStatus[key] = true;
+                }
+            }
+            if (videoStatus.video1 && videoStatus.video2 && videoStatus.video3) {
+                localStorage.setItem('excel_materi1_selesai', 'true');
+                document.getElementById("nextBtn").classList.remove("locked");
+            }
+        }
+    }
+
+    window.onload = function(){
+        if(localStorage.getItem('excel_materi1_selesai') === 'true'){
+            document.getElementById("nextBtn").classList.remove("locked");
+        }
+    }
+</script>
+
+</body>
+</html>

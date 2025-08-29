@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materi Microsoft PowerPoint</title>
+<style>
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin:0; padding:0; background:#f4f6f8; color:#333; }
+    header { background:linear-gradient(90deg, #D24726, #FF6F3C); color:#fff; text-align:center; padding:60px 20px; position:relative; overflow:hidden; }
+    header h1 { font-size:3em; margin:0; position:relative; z-index:2; }
+    header p { font-size:1.2em; margin-top:10px; opacity:0.9; }
+    header::before { content:''; position:absolute; width:300px; height:300px; background:rgba(255,255,255,0.1); border-radius:50%; top:-100px; right:-100px; }
+    .container { max-width:900px; margin:40px auto; padding:20px; }
+    .materi { background:#fff; border-radius:12px; padding:30px; margin-bottom:30px; box-shadow:0 8px 20px rgba(0,0,0,0.1); transition:transform 0.3s ease; }
+    .materi:hover { transform: translateY(-5px); }
+    .materi h2 { color:#D24726; margin-top:0; }
+    .materi p { line-height:1.6; margin-bottom:20px; }
+    .video-container { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
+    .video-container iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    .materi-nav { display:flex; justify-content:space-between; margin-top:30px; padding:20px; }
+    .btn-nav { display:inline-block; padding:10px 20px; background:#d35400; color:white; text-decoration:none; border-radius:8px; font-weight:bold; transition:0.3s; }
+    .btn-nav:hover { background:#a84300; transform:scale(1.05); }
+    .btn-nav.locked { background:#9ca3af; pointer-events:none; cursor:not-allowed; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Materi Microsoft PowerPoint</h1>
+    <p>Belajar MS PowerPoint dengan mudah dan interaktif melalui video tutorial</p>
+</header>
+
+<div class="container">
+    <!-- Materi 4 -->
+    <section class="materi">
+        <h2>4. Tips PowerPoint Profesional</h2>
+        <p>Di Microsoft PowerPoint, kamu bisa menerapkan berbagai tips profesional untuk membuat presentasi lebih efektif. Hal penting yang perlu diingat antara lain penggunaan desain yang konsisten, teks yang jelas, serta visual yang mendukung isi materi agar audiens lebih mudah memahami pesan yang disampaikan.</p>
+        <div class="video-container">
+            <iframe id="video1" src="https://www.youtube.com/embed/XtalEZxsnlQ?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 5 -->
+    <section class="materi">
+        <h2>5. Format Gambar Di PowerPoint</h2>
+        <p>Di Microsoft PowerPoint, kamu bisa memformat gambar dengan menambahkan berbagai efek seperti bayangan, pantulan, atau bingkai. Fitur ini berguna untuk mempercantik tampilan slide dan membuat gambar lebih menonjol dalam presentasi.</p>
+        <div class="video-container">
+            <iframe id="video2" src="https://www.youtube.com/embed/MNmwP_LD7nA?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 6 -->
+    <section class="materi">
+        <h2>6. Cara Menggunakan Slide Show Di PowerPoint</h2>
+        <p>Di Microsoft PowerPoint, kamu bisa menggunakan fitur Slide Show untuk menampilkan presentasi secara penuh di layar. Fitur ini berguna untuk mengatur transisi, timing, serta interaksi dengan audiens agar presentasi lebih menarik dan profesional.</p>
+        <div class="video-container">
+            <iframe id="video3" src="https://www.youtube.com/embed/7z4cgcC72W4?enablejsapi=1" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi -->
+    <div class="materi-nav">
+        <a href="materippt1.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="materippt3.html" class="btn-nav locked">Materi Selanjutnya →</a>
+    </div>
+</div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+var players = {};
+var videoStatus = {video1:false, video2:false, video3:false};
+
+// Inisialisasi YouTube API
+function onYouTubeIframeAPIReady() {
+    ['video1','video2','video3'].forEach(function(id){
+        players[id] = new YT.Player(id, { events:{ 'onStateChange': onPlayerStateChange } });
+    });
+}
+
+// Cek video selesai
+function onPlayerStateChange(event) {
+    if(event.data === YT.PlayerState.ENDED){
+        for(let key in players){
+            if(players[key] === event.target) videoStatus[key] = true;
+        }
+        // Jika semua video materi2 selesai
+        if(videoStatus.video1 && videoStatus.video2 && videoStatus.video3){
+            localStorage.setItem('ppt_materi2_selesai','true');
+            document.getElementById("nextBtn").classList.remove("locked");
+            // Update progress total kelas MS PPT
+            if(typeof updateProgressPPT === "function") updateProgressPPT();
+        }
+    }
+}
+
+// Saat halaman load
+window.onload = function(){
+    if(localStorage.getItem('ppt_materi2_selesai') === 'true'){
+        document.getElementById("nextBtn").classList.remove("locked");
+    }
+    // Update progress di index.html jika ada
+    if(typeof updateProgressPPT === "function") updateProgressPPT();
+}
+</script>
+
+</body>
+</html>

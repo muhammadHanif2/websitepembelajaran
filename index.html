@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelas MS Word & Lainnya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { margin:0; font-family: 'Poppins', sans-serif; background-color: #f9fafc; }
+        header { background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; text-align: center; padding: 60px 20px; position: relative; }
+        header::after { content: ""; position: absolute; bottom: -30px; left: 0; width: 100%; height: 60px; background: white; border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        header p { font-size: 1.2em; opacity: 0.9; }
+        .container { max-width: 1200px; margin: auto; padding: 60px 20px 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card-content { padding: 20px; text-align: center; }
+        .card-content h3 { margin-bottom: 10px; font-size: 1.4em; color: #333; }
+        .card-content p { font-size: 0.95em; color: #666; margin-bottom: 20px; }
+        .btn { display: inline-block; padding: 10px 18px; background: linear-gradient(135deg, #4facfe, #00f2fe); color: white; border-radius: 8px; font-weight: bold; text-decoration: none; transition: background 0.3s ease, transform 0.2s ease; }
+        .btn:hover { transform: scale(1.05); background: linear-gradient(135deg, #00f2fe, #4facfe); }
+        .progress-container { background-color: #eee; border-radius: 10px; height: 12px; overflow: hidden; margin: 10px 0; position: relative; }
+        .progress-bar { height: 100%; background: linear-gradient(135deg, #4facfe, #00f2fe); width: 0%; transition: width 0.4s ease; }
+        .progress-text { position: absolute; right: 10px; top: -22px; font-size: 0.9em; font-weight: 600; color: #333; }
+        #progress-excel { background: linear-gradient(135deg, #2e7d32, #66bb6a); }
+        #progress-corel { background: linear-gradient(135deg, #8e24aa, #d500f9); }
+        #progress-cpp { background: linear-gradient(135deg, #f44336, #ff5722); }
+        #progress-java { background: linear-gradient(135deg, #ff6f00, #ffca28); }
+        #progress-php { background: linear-gradient(135deg, #777bb3, #4f5b93); }
+        #progress-js { background: linear-gradient(135deg, #f7df1e, #ffb300); }
+        @media (max-width: 768px) { header h1 { font-size: 2em; } header p { font-size: 1em; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Belajar Komputer Bersama Hanif</h1>
+    <p>Pilih kelas favoritmu dan mulai belajar sekarang!</p>
+</header>
+
+<div class="container">
+    <!-- Card MS Word -->
+    <div class="card">
+        <img src="https://i.pinimg.com/736x/b6/06/44/b606442e5f47c7ed5bbea78e427d4861.jpg" alt="MS Word">
+        <div class="card-content">
+            <h3>Microsoft Word</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-msword"></div>
+                <span class="progress-text" id="progress-text-msword"></span>
+            </div>
+            <p>Pelajari dasar-dasar Microsoft Word untuk meningkatkan keterampilan mengetik dan mengedit dokumen.</p>
+            <a href="materi1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+    <!-- Card Excel -->
+    <div class="card">
+        <img src="https://i.pinimg.com/564x/c8/82/46/c8824641d531c4b6c7e5837234752e1d.jpg" alt="Microsoft Excel">
+        <div class="card-content">
+            <h3>Microsoft Excel</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-excel"></div>
+                <span class="progress-text" id="progress-text-excel"></span>
+            </div>
+            <p>Pelajari dasar-dasar Microsoft Excel untuk mengelola, menganalisis, dan menyajikan data dengan lebih efektif.</p>
+            <a href="materiexel1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+    <!-- Microsoft Power Point -->
+    <div class="card">
+        <img src="https://1000logos.net/wp-content/uploads/2020/08/Microsoft-PowerPoint-Logo.png" alt="Microsoft Power Point">
+        <div class="card-content">
+            <h3>Microsoft Power Point</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-ppt"></div>
+                <span class="progress-text" id="progress-ppt-text"></span>
+            </div>
+            <p>Pelajari dasar-dasar Microsoft PowerPoint untuk membuat, mengatur, dan menyajikan presentasi dengan lebih menarik dan efektif.</p>
+            <a href="materippt1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+    <!-- CorelDRAW -->
+    <div class="card">
+        <img src="https://images.seeklogo.com/logo-png/24/1/coreldraw-x7-logo-png_seeklogo-248595.png" alt="CorelDRAW">
+        <div class="card-content">
+            <h3>CorelDRAW</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-corel"></div>
+                <span class="progress-text" id="progress-text-corel"></span>
+            </div>
+            <p>Pelajari dasar-dasar CorelDRAW untuk membuat desain grafis, logo, dan ilustrasi profesional.</p>
+            <a href="matericorel1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+    <!-- Pemrograman C++ -->
+    <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" alt="C++">
+        <div class="card-content">
+            <h3>Pemrograman C++</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-cpp"></div>
+                <span class="progress-text" id="progress-text-cpp"></span>
+            </div>
+            <p>Pelajari dasar-dasar Pemrograman C++ untuk membangun program, logika, dan algoritma secara efisien.</p>
+            <a href="matericpp1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+    <!-- Pemrograman Java -->
+    <div class="card">
+        <img src="https://1000logos.net/wp-content/uploads/2020/09/Java-Logo.png" alt="Java">
+        <div class="card-content">
+            <h3>Pemrograman Java</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-java"></div>
+                <span class="progress-text" id="progress-text-java"></span>
+            </div>
+            <p>Pelajari dasar-dasar Pemrograman Java untuk membangun aplikasi desktop, mobile, maupun web.</p>
+            <a href="materijava1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+    <!-- Pemrograman PHP -->
+    <div class="card">
+        <img src="https://www.php.net/images/logos/new-php-logo.svg" alt="PHP">
+        <div class="card-content">
+            <h3>Pemrograman PHP</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-php"></div>
+                <span class="progress-text" id="progress-text-php"></span>
+            </div>
+            <p>Pelajari dasar-dasar Pemrograman PHP untuk membangun website dinamis dan interaktif.</p>
+            <a href="materiphp1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+   <!-- Pemrograman JavaScript -->
+    <div class="card">
+        <img src="https://static.vecteezy.com/system/resources/thumbnails/027/127/560/small_2x/javascript-logo-javascript-icon-transparent-free-png.png" alt="JavaScript">
+        <div class="card-content">
+            <h3>Pemrograman JavaScript</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-js"></div>
+                <span class="progress-text" id="progress-text-js"></span>
+            </div>
+            <p>Pelajari dasar-dasar JavaScript untuk membangun website interaktif dan aplikasi berbasis web.</p>
+            <a href="materijs1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+
+    <!-- ✅ Pemrograman Python (baru, setelah JavaScript) -->
+    <div class="card">
+        <img src="https://logos-world.net/wp-content/uploads/2021/10/Python-Logo.png" alt="Python">
+        <div class="card-content">
+            <h3>Pemrograman Python</h3>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-python"></div>
+                <span class="progress-text" id="progress-text-python"></span>
+            </div>
+            <p>Pelajari dasar-dasar Python untuk aplikasi, data science, dan kecerdasan buatan.</p>
+            <a href="materipy1.html" class="btn">Masuk Kelas</a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function updateProgressMSWord() {
+        let totalMateri = 5; 
+        let selesaiCount = 0;
+        for (let i = 1; i <= totalMateri; i++) {
+            if (localStorage.getItem(`msword_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if (localStorage.getItem('quizmsword_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri + 1)) * 100);
+        document.getElementById("progress-msword").style.width = persen + "%";
+        document.getElementById("progress-text-msword").innerText = persen === 100 ? "Completed" : persen + "%";
+    }
+
+    function updateProgressExcel() {
+        let totalMateri = 3;
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`excel_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('excel_quiz_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-excel").style.width = persen+"%";
+        document.getElementById("progress-text-excel").innerText = persen===100?"Completed":persen+"%";
+    }
+
+    function updateProgressPPT() {
+        let totalMateri = 3; 
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`ppt_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('quizmsppt_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-ppt").style.width = persen+"%";
+        document.getElementById("progress-ppt-text").innerText = persen===100?"Completed":persen+"%";
+    }
+
+    function updateProgressCorel() {
+        let totalMateri = 3; 
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`corel_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('quizcorel_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-corel").style.width = persen+"%";
+        document.getElementById("progress-text-corel").innerText = persen===100?"Completed":persen+"%";
+    }
+
+    function updateProgressCPP() {
+        let totalMateri = 3; 
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`cpp_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('quizcpp_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-cpp").style.width = persen+"%";
+        document.getElementById("progress-text-cpp").innerText = persen===100?"Completed":persen+"%";
+    }
+
+    function updateProgressJava() {
+        let totalMateri = 3; 
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`java_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('quizjava_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-java").style.width = persen+"%";
+        document.getElementById("progress-text-java").innerText = persen===100?"Completed":persen+"%";
+    }
+
+    function updateProgressPHP() {
+        let totalMateri = 3; 
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`php_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('quizphp_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-php").style.width = persen+"%";
+        document.getElementById("progress-text-php").innerText = persen===100?"Completed":persen+"%";
+    }
+
+    // ✅ Progress JavaScript
+    function updateProgressJS() {
+        let totalMateri = 3; 
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`js_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('quizjs_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-js").style.width = persen+"%";
+        document.getElementById("progress-text-js").innerText = persen===100?"Completed":persen+"%";
+    }
+
+    // ✅ Progress Python
+    function updateProgressPython() {
+        let totalMateri = 3; 
+        let selesaiCount = 0;
+        for (let i=1;i<=totalMateri;i++){
+            if(localStorage.getItem(`python_materi${i}_selesai`) === 'true') selesaiCount++;
+        }
+        if(localStorage.getItem('quizpython_selesai') === 'true') selesaiCount++;
+        let persen = Math.round((selesaiCount / (totalMateri+1)) * 100);
+        document.getElementById("progress-python").style.width = persen+"%";
+        document.getElementById("progress-text-python").innerText = persen===100?"Completed":persen+"%";
+    }
+
+
+    function updateAllProgress(){
+        updateProgressMSWord();
+        updateProgressExcel();
+        updateProgressPPT();
+        updateProgressCorel();
+        updateProgressCPP();
+        updateProgressJava();
+        updateProgressPHP();
+        updateProgressJS(); // ✅ Tambahan progress JavaScript
+        updateProgressPython(); // ✅ tambahan Python
+    }
+
+    window.onload = updateAllProgress;
+    window.addEventListener('storage', updateAllProgress);
+</script>
+
+</body>
+</html>

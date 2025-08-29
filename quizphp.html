@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz PHP</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f5f6fa; margin: 0; padding: 20px; }
+    h1 { text-align: center; color: #2f3640; }
+    .quiz-container { 
+        max-width: 800px; 
+        margin: auto; 
+        background: #fff; 
+        padding: 20px; 
+        border-radius: 10px; 
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+    }
+    .question { margin-bottom: 20px; padding: 15px; border-bottom: 1px solid #ddd; }
+    .question p { font-weight: bold; color: #333; }
+    label { display: block; margin: 5px 0; padding: 8px; border-radius: 5px; cursor: pointer; transition: background 0.2s; }
+    label:hover { background: #f0f0f0; }
+    button { 
+        background: #27ae60; color: white; padding: 12px 20px; border: none; 
+        cursor: pointer; border-radius: 5px; font-size: 16px; display: block; margin: 20px auto; 
+    }
+    button:hover { background: #1e8449; }
+    #result { text-align: center; font-size: 20px; margin-top: 20px; font-weight: bold; }
+    .answer-review { margin-top: 30px; padding: 15px; background: #f1f2f6; border-radius: 10px; }
+    .answer-item { margin-bottom: 15px; padding: 10px; border-radius: 5px; }
+    .correct { background-color: #d4edda; border: 1px solid #28a745; }
+    .incorrect { background-color: #f8d7da; border: 1px solid #dc3545; }
+    .actions { text-align: center; margin-top: 18px; }
+    .btn-link, .retry-btn { display: inline-block; padding: 12px 18px; border-radius: 6px; text-decoration: none; font-weight: bold; margin: 6px; }
+    .btn-link { background: #27ae60; color: #fff; }
+    .btn-link:hover { background: #1e8449; }
+    .retry-btn { background: #487eb0; color: #fff; border: none; cursor: pointer; }
+    .retry-btn:hover { background: #40739e; }
+    .fail-msg { color: #c23616; font-weight: bold; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<h1>Quiz PHP</h1>
+
+<div class="quiz-container" id="quiz">
+    <!-- Input nama -->
+    <div style="margin-bottom:20px;">
+        <label for="namaUser" style="font-weight:bold;">Nama Lengkap:</label>
+        <input type="text" id="namaUser" placeholder="Masukkan nama Anda" style="width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;border-radius:5px;" required>
+    </div>
+
+    <!-- Contoh pertanyaan -->
+    <div class="question" data-correct="b">
+        <p>1. PHP biasanya digunakan untuk?</p>
+        <label><input type="radio" name="q1" value="a"> Membuat gambar vektor</label>
+        <label><input type="radio" name="q1" value="b"> Membuat website dinamis</label>
+        <label><input type="radio" name="q1" value="c"> Membuat sistem operasi</label>
+        <label><input type="radio" name="q1" value="d"> Mengedit video</label>
+    </div>
+
+    <div class="question" data-correct="c">
+        <p>2. Perintah SQL UPDATE digunakan untuk?</p>
+        <label><input type="radio" name="q2" value="a"> Menambah data baru ke tabel</label>
+        <label><input type="radio" name="q2" value="b"> Menghapus data dari tabel</label>
+        <label><input type="radio" name="q2" value="c"> Mengubah data yang sudah ada dalam tabel</label>
+        <label><input type="radio" name="q2" value="d"> Menampilkan seluruh isi tabel</label>
+    </div>
+
+    <div class="question" data-correct="b">
+        <p>3. Struktur kendali yang digunakan untuk memilih salah satu blok kode dari beberapa kondisi adalah?</p>
+        <label><input type="radio" name="q3" value="a"> if-else</label>
+        <label><input type="radio" name="q3" value="b"> switch</label>
+        <label><input type="radio" name="q3" value="c"> loop</label>
+        <label><input type="radio" name="q3" value="d"> break</label>
+    </div>
+
+    <div class="question" data-correct="c">
+        <p>4. Apa manfaat utama function di PHPp?</p>
+        <label><input type="radio" name="q4" value="a"> Menyimpan banyak data dalam satu variabel</label>
+        <label><input type="radio" name="q4" value="b"> Mengulang kode tanpa loop</label>
+        <label><input type="radio" name="q4" value="c"> Mengelompokkan kode agar bisa dipakai ulang</label>
+        <label><input type="radio" name="q4" value="d"> Mengubah tipe data otomatis</label>
+    </div>
+
+    <div class="question" data-correct="b">
+        <p>5. Array di PHP digunakan untuk?</p>
+        <label><input type="radio" name="q5" value="a"> Menyimpan satu nilai saja</label>
+        <label><input type="radio" name="q5" value="b"> Menyimpan banyak nilai dalam satu variabel</label>
+        <label><input type="radio" name="q5" value="c"> Menyimpan hanya teks</label>
+        <label><input type="radio" name="q5" value="d"> Menyimpan database</label>
+    </div>
+
+    <div class="question" data-correct="b">
+        <p>6. Associative array di PHP menggunakan?</p>
+        <label><input type="radio" name="q6" value="a"> Angka sebagai indeks</label>
+        <label><input type="radio" name="q6" value="b"> Nama kunci (key) sebagai indeks</label>
+        <label><input type="radio" name="q6" value="c"> Tipe data campuran otomatis</label>
+        <label><input type="radio" name="q6" value="d"> Function sebagai indeks</label>
+    </div>
+
+    <div class="question" data-correct="b">
+        <p>7. Metode yang mengirim data lewat URL adalah?</p>
+        <label><input type="radio" name="q7" value="a"> POST</label>
+        <label><input type="radio" name="q7" value="b"> GET</label>
+        <label><input type="radio" name="q7" value="c"> SESSION</label>
+        <label><input type="radio" name="q7" value="d"> COOKIE</label>
+    </div>
+
+    <div class="question" data-correct="b">
+        <p>8. MySQL berfungsi sebagai?</p>
+        <label><input type="radio" name="q8" value="a"> Bahasa pemrograman</label>
+        <label><input type="radio" name="q8" value="b"> Database Management System</label>
+        <label><input type="radio" name="q8" value="c"> Text editor</label>
+        <label><input type="radio" name="q8" value="d"> CWeb server</label>
+    </div>
+
+     <div class="question" data-correct="c">
+        <p>9. Perintah SQL untuk menambahkan data baru ke tabel adalahi?</p>
+        <label><input type="radio" name="q9" value="a"> UPDATE</label>
+        <label><input type="radio" name="q9" value="b"> SELECT</label>
+        <label><input type="radio" name="q9" value="c"> INSERT</label>
+        <label><input type="radio" name="q9" value="d"> CDELETE</label>
+    </div>
+
+    <div class="question" data-correct="c">
+        <p>10. Untuk mencari data berdasarkan kondisi tertentu di MySQL, digunakan perintah?</p>
+        <label><input type="radio" name="q10" value="a"> SEARCH</label>
+        <label><input type="radio" name="q10" value="b"> FIND</label>
+        <label><input type="radio" name="q10" value="c"> SELECT ... WHERE</label>
+        <label><input type="radio" name="q10" value="d"> LOOKUP</label>
+    </div>
+
+    <!-- Tombol submit -->
+    <button id="submitBtn" onclick="checkAnswers()">Submit</button>
+
+    <div id="result"></div>
+    <div id="answerReview" class="answer-review"></div>
+    <div id="actions" class="actions"></div>
+</div>
+
+<script>
+function checkAnswers() {
+    const nama = document.getElementById('namaUser').value.trim();
+    if (!nama) { alert("Masukkan nama lengkap dulu 🙂"); return; }
+
+    const questions = document.querySelectorAll('.question');
+    let correctCount = 0;
+    let reviewHTML = "";
+
+    questions.forEach((question, index) => {
+        const correct = question.getAttribute('data-correct');
+        const selected = question.querySelector('input[type="radio"]:checked');
+        let isCorrect = false;
+        let userAnswer = "<em>Tidak dijawab</em>";
+
+        if (selected) {
+            userAnswer = selected.nextSibling.textContent.trim();
+            isCorrect = selected.value === correct;
+            if (isCorrect) correctCount++;
+        }
+
+        const correctText = [...question.querySelectorAll('input')].find(i => i.value === correct).nextSibling.textContent.trim();
+        reviewHTML += `<div class="answer-item ${isCorrect ? 'correct' : 'incorrect'}">
+            <strong>Pertanyaan ${index+1}:</strong><br>
+            Jawaban Anda: ${userAnswer}<br>
+            Jawaban Benar: ${correctText}
+        </div>`;
+    });
+
+    const percent = Math.round((correctCount / questions.length) * 100);
+
+    localStorage.setItem("namaUser", nama);
+    localStorage.setItem("nilaiQuizPHP", percent);
+
+    if (percent >= 60) localStorage.setItem("quizphp_selesai", "true");
+
+    document.getElementById('result').innerText = `Nilai Anda: ${percent} / 100 (Benar ${correctCount} dari ${questions.length})`;
+    document.getElementById('answerReview').innerHTML = reviewHTML;
+
+    const actions = document.getElementById('actions');
+    if (percent >= 60) {
+        actions.innerHTML = `<a href="sertifikatphp.html" class="btn-link">Lihat Sertifikat</a>`;
+    } else {
+        actions.innerHTML = `
+            <div class="fail-msg">Maaf, Anda belum lulus (minimal 60).</div>
+            <a href="materiphp1.html" class="btn-link">Ulangi Materi</a>
+            <button type="button" class="retry-btn" onclick="resetQuiz()">Ulangi Quiz</button>
+        `;
+    }
+
+    document.getElementById('submitBtn').disabled = true;
+    updateProgressBar();
+}
+
+function resetQuiz() {
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    document.getElementById('result').textContent = "";
+    document.getElementById('answerReview').innerHTML = "";
+    document.getElementById('actions').innerHTML = "";
+    document.getElementById('submitBtn').disabled = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgressBar() {
+    const totalMateri = 4; // hanya 4 materi PHP
+    let selesaiCount = 0;
+    for (let i = 1; i <= totalMateri; i++) {
+        if (localStorage.getItem(`php_materi${i}_selesai`) === 'true') selesaiCount++;
+    }
+    if (localStorage.getItem('quizphp_selesai') === 'true') selesaiCount++;
+    let progress = (selesaiCount / (totalMateri + 1)) * 100;
+    localStorage.setItem('progressPHP', progress); 
+    window.dispatchEvent(new Event('storage')); 
+}
+</script>
+
+</body>
+</html>

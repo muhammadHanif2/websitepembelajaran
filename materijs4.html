@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi JavaScript - Bagian 4</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(90deg, #f7df1e, #f4d600, #e0c200);
+            color: #000;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .materi {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .materi:hover {
+            transform: translateY(-5px);
+        }
+
+        .materi h2 {
+            color: #bfa600;
+            margin-top: 0;
+        }
+
+        .materi p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .materi-nav {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .btn-nav {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #f7df1e;
+            color: #000;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background-color: #e0c200;
+            transform: scale(1.05);
+        }
+
+        .btn-nav.disabled {
+            background-color: #bbb;
+            color: #666;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Materi JavaScript</h1>
+    <p>Belajar Operator di JavaScript dengan video interaktif</p>
+</header>
+
+<div class="container">
+
+    <!-- Materi 10 -->
+    <section class="materi">
+        <h2>10. CONTROL FLOW pada JAVASCRIPT</h2>
+        <p>Control Flow adalah cara JavaScript mengatur jalannya kode, baris demi baris. Secara default, kode dijalankan dari atas ke bawah. Tapi dengan bantuan percabangan seperti if-else atau switch, serta perulangan seperti for, while, atau do-while, kita bisa mengatur alur program sesuai kondisi yang terjadi. Jadi, control flow ini ibarat peta jalan supaya kode berjalan sesuai logika yang kita mau.</p>
+        <div class="video-container">
+            <iframe id="video10" src="https://www.youtube.com/embed/cL5aeWbIEuk?enablejsapi=1"
+            title="Video CONTROL FLOW pada JAVASCRIPT" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 11 -->
+    <section class="materi">
+        <h2>11. PENGULANGAN : WHILE pada JAVASCRIPT</h2>
+        <p>Perulangan while digunakan ketika kita ingin menjalankan kode selama kondisi tertentu masih benar (true). Selama syaratnya terpenuhi, blok kode di dalam while akan terus diulang. Kalau kondisi sudah salah (false), perulangan akan berhenti. while cocok dipakai kalau kita belum tahu pasti berapa kali perulangan harus dijalankan.</p>
+        <div class="video-container">
+            <iframe id="video11" src="https://www.youtube.com/embed/61XLzozBj2c?enablejsapi=1"
+            title="Video PENGULANGAN : WHILE pada JAVASCRIPT" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Materi 12 -->
+    <section class="materi">
+        <h2>12. PENGULANGAN : FOR pada JAVASCRIPT</h2>
+        <p>Perulangan for dipakai ketika kita sudah tahu berapa kali kode harus dijalankan. Struktur dasarnya terdiri dari tiga bagian: inisialisasi (nilai awal), kondisi (syarat berhenti), dan increment/decrement (perubahan nilai tiap loop). Dengan for, kita bisa mengulang sebuah perintah dengan rapi dan terkontrol, misalnya menampilkan angka 1 sampai 10.</p>
+        <div class="video-container">
+            <iframe id="video12" src="https://www.youtube.com/embed/1HussC8jKrk?enablejsapi=1"
+            title="Video PENGULANGAN : FOR pada JAVASCRIPT" allowfullscreen></iframe>
+        </div>
+    </section>
+
+    <!-- Navigasi Materi -->
+    <div class="materi-nav">
+        <a id="prevBtn" href="materijs3.html" class="btn-nav">← Materi Sebelumnya</a>
+        <a id="nextBtn" href="quizjs.html" class="btn-nav disabled">Kerjakan Quiz →</a>
+    </div>
+
+</div>
+
+<!-- Script YouTube API dan tracking progress -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+
+    var players = {};
+    var videoStatus = {video10:false, video11:false, video12:false};
+
+    function onYouTubeIframeAPIReady() {
+        ['video10','video11','video12'].forEach(function(id){
+            players[id] = new YT.Player(id, {
+                events: {'onStateChange': onPlayerStateChange}
+            });
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if(event.data === YT.PlayerState.ENDED){
+            for(let key in players){
+                if(players[key] === event.target){
+                    videoStatus[key] = true;
+                }
+            }
+            if(videoStatus.video10 && videoStatus.video11 && videoStatus.video12){
+                localStorage.setItem('js_materi4_selesai','true');
+                document.getElementById("nextBtn").classList.remove("disabled");
+            }
+        }
+    }
+
+    window.onload = function() {
+        if(localStorage.getItem('js_materi4_selesai') === 'true'){
+            document.getElementById("nextBtn").classList.remove("disabled");
+        }
+    }
+</script>
+
+</body>
+</html>
